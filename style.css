@@ -1,0 +1,89 @@
+body {
+    background-color: #343e58;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 64px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 36px;
+}
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #12151e;
+    padding: 58px;
+    border-radius: 14px;
+    gap: 4px;
+}
+
+.display {
+    color:#e4f0f3;
+    background-color: #12151e;
+    padding: 18px;
+}
+
+.buttons {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 4px;
+}
+
+.pane1 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.operators button {
+    background-color: #2452c8;
+    border: 1px solid #2452c8;
+}
+
+.row button {
+    background-color: #56617d;
+    border: 1px solid #56617d;
+}
+
+.controls button {
+    font-size: 34px;
+    background-color: #56617d;
+    border: 1px solid #56617d;
+    border-radius: 16px;
+    width: 256px;
+    padding: 4px 14px;
+}
+
+.operators button, .row button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 34px;
+    border-radius: 16px;
+    padding: 4px 18px;
+    width: 64px;
+    height: 48px;
+}
+
+#equals {
+    background-color: #6651db;
+    border: 1px solid #6651db;
+}
