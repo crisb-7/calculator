@@ -11,7 +11,8 @@ function multiply(a,b) {
 }
 
 function divide(a, b) {
-    return a/b;
+    let division = a/b;
+    return division == Infinity ? "Clever, huh?" : division;
 }
 
 function operate(operator, firstNumber, secondNumber) {
@@ -51,7 +52,6 @@ let displayNum1 = "";
 let displayNum2 = "";
 let displayOperator = "";
 const display = document.querySelector(".display");
-
 const numbers = document.querySelectorAll(".numbers button")
 numbers.forEach((button) => {
     button.addEventListener("click", () => {
