@@ -29,11 +29,23 @@ function operate(operator, firstNumber, secondNumber) {
 }
 
 function runEquals() {
-    result = operate(operator, Number(displayNum1), Number(displayNum2))
+    num1 = Number(displayNum1);
+    num2 = Number(displayNum2);
+    console.log(num1, num2, operator)
+    result = operate(operator, num1, num2)
     display.innerHTML = result;
     displayNum1 = String(result);
     displayNum2 = "";
     displayOperator = "";
+}
+
+function limitDecimals(number) {
+    let limit = 5;
+    if (String(number).length > limit) {
+        return Number(number.toFixed(limit));
+    } else {
+        return number;
+    }
 }
 
 function displayText(number1, number2, operator){
@@ -48,32 +60,52 @@ const minuts = "-"
 let operator;
 let result;
 
+let num1;
+let num2;
+
 let displayNum1 = "";
 let displayNum2 = "";
 let displayOperator = "";
 const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".numbers button")
+
 numbers.forEach((button) => {
     button.addEventListener("click", () => {
-        if (displayNum1.length == 0 || displayOperator.length == 0) {
-            displayNum1 += button.id;
+        if (displayOperator.length == 0) {
+            if (String(displayNum1).includes(".0") || String(displayNum1).includes(`${Number(displayNum1)}.`)) {
+                displayNum1 += button.id;
+            } else {
+                displayNum1 += button.id;
+                console.log("Don't repeat zeroes pls");
+                displayNum1 = limitDecimals(Number(displayNum1));
+            }
             display.innerHTML = displayText(displayNum1, displayNum2, displayOperator);
         } else {
-            displayNum2 += button.id;
+            if (String(displayNum2).includes(".0") || String(displayNum2).includes(`${Number(displayNum2)}.`)) {
+                displayNum2 += button.id;
+            } else {
+                displayNum2 += button.id;
+                console.log("Don't repeat zeroes pls");
+                displayNum2 = limitDecimals(Number(displayNum2));
+            }
             display.innerHTML = displayText(displayNum1, displayNum2, displayOperator);
         }
     });
 });
 
+// Number.parseFloat(displayNum1).toFixed(6)
+
 const decimalPoint = document.querySelector(".row #decimal");
 decimalPoint.addEventListener("click", () => {
-    // 0.1 behavior
-    // 000000.1 behavior
-    if ((/[0-9][.]/.test(displayNum1))){
+    if (/[0-9][.]/.test(displayNum1) && displayOperator.length == 0 || /[0-9][.]/.test(displayNum2)){
         console.log("Cannot use more than one decimal point.")
         return;
-    } else {
+    } 
+    if (displayOperator.length == 0) {
         displayNum1 += decimalPoint.textContent;
+        display.innerHTML = displayText(displayNum1, displayNum2, displayOperator);
+    } else {
+        displayNum2 += decimalPoint.textContent;
         display.innerHTML = displayText(displayNum1, displayNum2, displayOperator);
     }
 });
@@ -97,9 +129,7 @@ operators.forEach((button) => {
 
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", () => {
-    console.log(displayNum1, displayNum2, operator)
     runEquals()
-    // only one number (without operator behaviour)
 });
 
 const clear = document.querySelector("#clear");
@@ -112,3 +142,10 @@ clear.addEventListener("click", () => {
     operator = "";
     display.innerHTML = num1;
 });
+
+/* 
+-------------- To-Do ----------------
+- Too many decimals
+- Pressing equals with only one number, with first number and operator
+- Infinity answer caluclating after
+*/
