@@ -2,7 +2,6 @@ body {
     background-color: #343e58;
     display: flex;
     justify-content: center;
-    align-items: center;
     margin: 64px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 36px;
@@ -11,17 +10,18 @@ body {
 .frame {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: space-between; */
     align-items: center;
     background-color: #12151e;
     padding: 58px;
     border-radius: 14px;
     gap: 4px;
+    /* width: 550px; */
 }
 
 .display {
     color:#e4f0f3;
-    background-color: #12151e;
+    background-color: #545b6d;
     padding: 18px;
 }
 
@@ -51,7 +51,7 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 4px;
 }
 
@@ -70,7 +70,7 @@ body {
     background-color: #56617d;
     border: 1px solid #56617d;
     border-radius: 16px;
-    width: 256px;
+    /* width: 256px; */
     padding: 4px 14px;
 }
 
@@ -79,7 +79,7 @@ body {
     font-size: 34px;
     border-radius: 16px;
     padding: 4px 18px;
-    width: 64px;
+    /* width: 64px; */
     height: 48px;
 }
 
